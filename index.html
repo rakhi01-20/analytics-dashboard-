@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PulseAnalytics | Full-Stack Data Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <div>
+        <h1>Pulse<span class="accent">Analytics</span></h1>
+        <p class="mono sub">full-stack dashboard · Express + SQLite backend</p>
+      </div>
+    </div>
+    <div class="actions">
+      <label class="btn btn-primary">
+        Upload CSV
+        <input type="file" id="fileInput" accept=".csv" hidden />
+      </label>
+      <button id="sampleBtn" class="btn btn-ghost">Load sample data</button>
+    </div>
+  </header>
+
+  <div id="errorBox" class="error hidden"></div>
+
+  <main id="emptyState" class="empty-state">
+    <div class="empty-icon">◇</div>
+    <h2>No dataset loaded yet</h2>
+    <p>Upload a CSV file — it gets parsed and stored in a real SQLite database on the server. All stats and charts below are computed by backend API calls.</p>
+  </main>
+
+  <main id="dashboard" class="dashboard hidden">
+    <div class="meta-row">
+      <div class="mono meta-text" id="fileMeta"></div>
+      <div class="selectors">
+        <select id="numericSelect" class="select"></select>
+        <select id="categorySelect" class="select"></select>
+      </div>
+    </div>
+
+    <section class="stat-grid" id="statGrid"></section>
+
+    <section class="chart-grid">
+      <div class="card">
+        <h3><span class="icon teal">▤</span> Average <span id="numLabel1"></span> by <span id="catLabel1"></span></h3>
+        <canvas id="barChart" height="220"></canvas>
+      </div>
+      <div class="card">
+        <h3><span class="icon indigo">◔</span> Distribution of <span id="catLabel2"></span></h3>
+        <canvas id="pieChart" height="220"></canvas>
+      </div>
+      <div class="card wide">
+        <h3><span class="icon green">↗</span> <span id="numLabel2"></span> across records</h3>
+        <canvas id="lineChart" height="180"></canvas>
+      </div>
+    </section>
+
+    <section class="card table-card">
+      <div class="table-header">
+        <h3>Raw data <span id="rowCount" class="mono"></span></h3>
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Search rows..." class="search-input" />
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table id="dataTable">
+          <thead id="tableHead"></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button id="prevPage" class="btn btn-ghost small">Prev</button>
+        <span id="pageInfo" class="mono"></span>
+        <button id="nextPage" class="btn btn-ghost small">Next</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

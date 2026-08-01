@@ -1,0 +1,21 @@
+department,semester,marks,attendance,status
+Computer Science,1,78,92,Pass
+Computer Science,2,65,80,Pass
+Electronics,1,54,70,Pass
+Mechanical,1,42,55,Fail
+Computer Science,3,88,95,Pass
+Electronics,2,73,85,Pass
+Mechanical,2,39,48,Fail
+Civil,1,61,77,Pass
+Computer Science,1,91,98,Pass
+Civil,2,48,60,Fail
+Electronics,3,69,82,Pass
+Mechanical,1,58,71,Pass
+Civil,1,35,50,Fail
+Computer Science,2,83,90,Pass
+Electronics,1,76,88,Pass
+Computer Science,3,95,99,Pass
+Mechanical,3,44,58,Fail
+Electronics,2,81,91,Pass
+Civil,3,52,65,Pass
+Computer Science,1,29,40,Fail
